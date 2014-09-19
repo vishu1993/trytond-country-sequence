@@ -1,0 +1,5 @@
+[run]
+source = trytond.modules.country_sequence
+
+[report]
+omit = */tests/*, */setup.py
