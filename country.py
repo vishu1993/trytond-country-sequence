@@ -18,6 +18,12 @@ class Country:
 
     sequence = fields.Integer("Sequence", required=True)
 
+    @classmethod
+    def __setup__(cls):
+        super(Country, cls).__setup__()
+        cls._order.insert(0, ('sequence', 'ASC'))
+        cls._order.insert(1, ('name', 'ASC'))
+
     @staticmethod
     def default_sequence():
         return 300
