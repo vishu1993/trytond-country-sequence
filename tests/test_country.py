@@ -46,13 +46,25 @@ class TestCountry(unittest.TestCase):
 
             self.assertEqual(country.sequence, 300)
 
-            country, = Country.create([{
+            country1, country2, country3 = Country.create([{
+                'name': 'United States',
+                'code': 'US',
+                'sequence': 100
+            }, {
                 'name': 'Australia',
                 'code': 'AU',
+                'sequence': 400
+            }, {
+                'name': 'Canada',
+                'code': 'CA',
                 'sequence': 100
             }])
 
-            self.assertEqual(country.sequence, 100)
+            self.assertEqual(country1.sequence, 100)
+
+            countries = Country.search([])
+            self.assertEqual(countries[0].code, 'CA')
+            self.assertEqual(countries[1].code, 'US')
 
 
 def suite():
